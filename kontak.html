@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontak & Konsultasi | PT. RAVIN JAYA KONSTRUKSI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header id="main-navbar"></header>
+
+  <section class="bg-[#0B192C] blueprint-grid text-white py-14 border-b-4 border-amber-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Hubungi Tim Teknik Kami</span>
+      <h1 class="font-display font-extrabold text-4xl sm:text-5xl uppercase mt-1">Kontak & Konsultasi Proyek</h1>
+      <p class="text-slate-300 text-sm sm:text-base mt-2 max-w-2xl">Jadwalkan survei lokasi atau konsultasi Rencana Anggaran Biaya (RAB) bersama tim PT. Ravin Jaya Konstruksi.</p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <div class="lg:col-span-7 bg-white p-8 border-t-4 border-amber-500 shadow-lg rounded-sm">
+          <h2 class="font-display font-extrabold text-3xl text-[#0B192C] uppercase mb-2">Formulir Konsultasi Proyek</h2>
+          <p class="text-xs text-slate-500 mb-6">Data yang Anda kirim akan otomatis tercatat pada database sistem kami untuk segera ditindaklanjuti.</p>
+
+          <form id="consultation-form" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nama Lengkap / Perusahaan *</label>
+                <input type="text" id="nama" required placeholder="Contoh: Bpk. Ahmad / PT. Maju" class="w-full px-4 py-3 border border-slate-300 rounded text-sm focus:border-amber-500 focus:outline-none">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nomor WhatsApp Aktif *</label>
+                <input type="tel" id="whatsapp" required placeholder="0812xxxxxxxx" class="w-full px-4 py-3 border border-slate-300 rounded text-sm focus:border-amber-500 focus:outline-none">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Alamat Email</label>
+                <input type="email" id="email" placeholder="email@anda.com" class="w-full px-4 py-3 border border-slate-300 rounded text-sm focus:border-amber-500 focus:outline-none">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Jenis Layanan Konstruksi *</label>
+                <select id="layanan" required class="w-full px-4 py-3 border border-slate-300 rounded text-sm bg-white focus:border-amber-500 focus:outline-none">
+                  <option value="Pembangunan Gedung">Pembangunan Gedung</option>
+                  <option value="Renovasi Bangunan">Renovasi Bangunan</option>
+                  <option value="Pembangunan Jalan">Pembangunan Jalan</option>
+                  <option value="Infrastruktur & Sipil">Infrastruktur & Sipil</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Lokasi Proyek *</label>
+              <input type="text" id="lokasi" required placeholder="Kecamatan / Kabupaten / Kota lokasi proyek" class="w-full px-4 py-3 border border-slate-300 rounded text-sm focus:border-amber-500 focus:outline-none">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Deskripsi Kebutuhan Proyek *</label>
+              <textarea id="pesan" rows="4" required placeholder="Jelaskan perkiraan luas bangunan, spesifikasi pekerjaan, atau jadwal pelaksanaan..." class="w-full px-4 py-3 border border-slate-300 rounded text-sm focus:border-amber-500 focus:outline-none"></textarea>
+            </div>
+
+            <button type="submit" id="submit-btn" class="w-full bg-[#0B192C] hover:bg-amber-500 hover:text-[#0B192C] text-white font-extrabold py-4 rounded text-sm uppercase tracking-wider transition flex items-center justify-center gap-2 shadow-lg">
+              <i class="fa-solid fa-paper-plane"></i> Kirim Permintaan Konsultasi
+            </button>
+
+            <div id="form-status" class="hidden"></div>
+          </form>
+        </div>
+
+        <div class="lg:col-span-5 space-y-6">
+          <div class="bg-[#0B192C] text-white p-7 rounded-sm shadow-lg border-t-4 border-emerald-500">
+            <h3 class="font-display font-bold text-2xl uppercase text-amber-400 mb-4">Kontak Cepat</h3>
+            <div class="space-y-4 text-sm">
+              <a href="https://wa.me/6281390957877" target="_blank" class="flex items-center gap-4 p-3.5 bg-[#11243E] rounded border border-slate-700 hover:border-emerald-500 transition">
+                <i class="fa-brands fa-whatsapp text-3xl text-emerald-400"></i>
+                <div>
+                  <span class="text-xs text-slate-400 block">WhatsApp / Telepon</span>
+                  <strong class="text-base text-white">0813-9095-7877</strong>
+                </div>
+              </a>
+
+              <a href="mailto:ptravinjayacontriksi@gmail.com" class="flex items-center gap-4 p-3.5 bg-[#11243E] rounded border border-slate-700 hover:border-amber-500 transition">
+                <i class="fa-solid fa-envelope text-2xl text-amber-400"></i>
+                <div>
+                  <span class="text-xs text-slate-400 block">Email Perusahaan</span>
+                  <strong class="text-sm text-white break-all">ptravinjayacontriksi@gmail.com</strong>
+                </div>
+              </a>
+            </div>
+
+            <div class="mt-6 pt-5 border-t border-slate-700">
+              <span class="text-xs font-bold uppercase text-slate-400 block mb-3">Akun Media Sosial Resmi</span>
+              <div class="grid grid-cols-2 gap-2.5 text-xs font-bold">
+                <a href="https://www.facebook.com/search/top?q=ptravinjayacontriksi%40gmail.com" target="_blank" class="flex items-center gap-2.5 bg-[#1877F2] px-3.5 py-2.5 rounded hover:opacity-90">
+                  <i class="fa-brands fa-facebook text-lg"></i> Facebook
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" class="flex items-center gap-2.5 bg-gradient-to-r from-[#f09433] via-[#dc2743] to-[#bc1888] px-3.5 py-2.5 rounded hover:opacity-90">
+                  <i class="fa-brands fa-instagram text-lg"></i> Instagram
+                </a>
+                <a href="https://www.tiktok.com/search?q=081390957877" target="_blank" class="flex items-center gap-2.5 bg-black border border-slate-600 px-3.5 py-2.5 rounded hover:border-amber-400">
+                  <i class="fa-brands fa-tiktok text-lg"></i> TikTok
+                </a>
+                <a href="https://www.youtube.com/results?search_query=ptravinjayacontriksi%40gmail.com" target="_blank" class="flex items-center gap-2.5 bg-[#FF0000] px-3.5 py-2.5 rounded hover:opacity-90">
+                  <i class="fa-brands fa-youtube text-lg"></i> YouTube
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16">
+        <h2 class="font-display font-extrabold text-3xl text-[#0B192C] uppercase mb-6 border-l-4 border-amber-500 pl-3">
+          Alamat & Peta Lokasi 3 Kantor Cabang
+        </h2>
+        <div id="branches-map-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="main-footer"></div>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("branches-map-grid").innerHTML = COMPANY_DATA.branches.map((b, i) => `
+        <div class="bg-white border border-slate-200 rounded-sm overflow-hidden shadow-md flex flex-col">
+          <div class="h-56 w-full bg-slate-200">
+            <iframe src="${b.mapQuery}" class="w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="bg-amber-500 text-[#0B192C] text-[10px] font-extrabold px-2.5 py-0.5 uppercase">Cabang 0${i + 1}</span>
+              <h3 class="font-display font-bold text-xl text-[#0B192C] mt-2">${b.title}</h3>
+              <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">${b.address}</p>
+            </div>
+            <a href="${b.mapLink}" target="_blank" class="mt-4 inline-flex items-center justify-center gap-2 bg-[#0B192C] hover:bg-amber-500 hover:text-[#0B192C] text-white text-xs font-bold py-2.5 px-4 rounded transition">
+              <i class="fa-solid fa-diamond-turn-right"></i> Petunjuk Arah Google Maps
+            </a>
+          </div>
+        </div>
+      `).join("");
+    });
+  </script>
+</body>
+</html>

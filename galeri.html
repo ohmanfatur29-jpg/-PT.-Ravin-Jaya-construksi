@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeri Proyek & Lapangan | PT. RAVIN JAYA KONSTRUKSI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header id="main-navbar"></header>
+
+  <section class="bg-[#0B192C] blueprint-grid text-white py-14 border-b-4 border-amber-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Arsip Visual Lapangan</span>
+      <h1 class="font-display font-extrabold text-4xl sm:text-5xl uppercase mt-1">Galeri Foto & Video Proyek</h1>
+      <p class="text-slate-300 text-sm sm:text-base mt-2 max-w-2xl">Dokumentasi lengkap aktivitas tim teknik, alat berat, proses pengerjaan, dan hasil akhir konstruksi.</p>
+    </div>
+  </section>
+
+  <section class="py-14 bg-[#0F223D] text-white border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-3 mb-8">
+        <span class="bg-amber-500 text-[#0B192C] px-3 py-1 rounded text-xs font-extrabold uppercase">Video Lapangan</span>
+        <h2 class="font-display font-bold text-3xl uppercase">Dokumentasi Video Konstruksi (6 Video)</h2>
+      </div>
+      <div id="video-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+        <div>
+          <span class="text-amber-600 font-bold text-xs uppercase tracking-widest">Klik Foto Untuk Memperbesar</span>
+          <h2 class="font-display font-extrabold text-3xl text-[#0B192C] uppercase">Foto Kegiatan & Hasil Pekerjaan (43 Foto)</h2>
+        </div>
+      </div>
+      <div id="photo-gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"></div>
+    </div>
+  </section>
+
+  <div id="lightbox" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4">
+    <button id="close-lightbox" class="absolute top-5 right-6 text-white hover:text-amber-400 text-4xl font-bold">&times;</button>
+    <div class="max-w-4xl w-full bg-[#0B192C] border-2 border-amber-500 rounded overflow-hidden">
+      <img id="lightbox-img" src="" alt="Preview" class="w-full max-h-[75vh] object-contain bg-black">
+      <div class="p-4 text-white">
+        <h3 id="lightbox-title" class="font-display font-bold text-xl text-amber-400"></h3>
+        <p id="lightbox-desc" class="text-xs text-slate-300 mt-1"></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="main-footer"></div>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const videoGrid = document.getElementById("video-grid");
+      videoGrid.innerHTML = PROJECT_VIDEOS.map(v => `
+        <div class="bg-[#0B192C] border border-slate-700 rounded-sm overflow-hidden shadow-lg">
+          <div class="aspect-video w-full bg-black">
+            <iframe src="${getDriveVideoPreview(v.id)}" 
+                    class="w-full h-full border-0" 
+                    allow="autoplay; fullscreen" 
+                    loading="lazy"></iframe>
+          </div>
+          <div class="p-4">
+            <span class="text-[11px] font-bold text-amber-400 uppercase">${v.duration}</span>
+            <h3 class="font-display font-bold text-lg text-white mt-0.5">${v.title}</h3>
+            <p class="text-xs text-slate-400 mt-1">${v.desc}</p>
+          </div>
+        </div>
+      `).join("");
+
+      const photoGrid = document.getElementById("photo-gallery-grid");
+      photoGrid.innerHTML = PROJECT_PHOTOS.map((p, idx) => `
+        <div onclick="openLightbox(${idx})" class="cursor-pointer group bg-white p-2 border border-slate-300 hover:border-amber-500 shadow-sm hover:shadow-lg transition">
+          <div class="relative h-52 overflow-hidden bg-slate-200">
+            <img src="${getDriveImageUrl(p.id, 'w600')}" 
+                 onerror="handleMediaError(this, '${p.id}.jpg')" 
+                 loading="lazy"
+                 alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-[#0B192C]/0 group-hover:bg-[#0B192C]/40 transition flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 bg-amber-500 text-[#0B192C] px-3 py-1 rounded text-xs font-bold">
+                <i class="fa-solid fa-magnifying-glass-plus"></i> Perbesar
+              </span>
+            </div>
+          </div>
+          <div class="pt-2.5 pb-1 px-1">
+            <span class="text-[10px] font-bold text-amber-600 uppercase">${p.category} • ${p.location}</span>
+            <h4 class="font-display font-bold text-base text-[#0B192C] truncate">${p.title}</h4>
+          </div>
+        </div>
+      `).join("");
+
+      const lightbox = document.getElementById("lightbox");
+      document.getElementById("close-lightbox").onclick = () => lightbox.classList.add("hidden");
+      lightbox.onclick = (e) => { if (e.target === lightbox) lightbox.classList.add("hidden"); };
+    });
+
+    function openLightbox(index) {
+      const item = PROJECT_PHOTOS[index];
+      const lightbox = document.getElementById("lightbox");
+      const img = document.getElementById("lightbox-img");
+      img.src = getDriveImageUrl(item.id, "w1600");
+      img.onerror = () => handleMediaError(img, `${item.id}.jpg`);
+      document.getElementById("lightbox-title").textContent = `${item.title} (${item.location})`;
+      document.getElementById("lightbox-desc").textContent = item.desc;
+      lightbox.classList.remove("hidden");
+      lightbox.classList.add("flex");
+    }
+  </script>
+</body>
+</html>
